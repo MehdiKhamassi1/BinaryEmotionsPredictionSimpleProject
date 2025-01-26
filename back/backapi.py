@@ -36,13 +36,7 @@ def prepare_image(image_bytes: bytes):
 
 @app.post("/predict/")
 async def predict(file: UploadFile = File(...)):
-    # Read image data from the uploaded file
-    #image_data = await file.read()
-    #image_array = prepare_image(image_data)    
-    # Predict the class of the image
-    #predictions = model.predict(image_array)   
-    # Assuming the model has a softmax output and the predictions are probabilities
-    #predicted_class = np.argmax(predictions, axis=1)
+
     image_data = await file.read()
     image_array = prepare_image(image_data)
     yhat = model.predict(image_array)
